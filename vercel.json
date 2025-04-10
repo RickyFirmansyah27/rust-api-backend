@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/main.rs": {
+      "runtime": "vercel-rust@4.0.7"
+    }
+  },
+  "routes": [
+    { "src": "/.*", "dest": "/api/main.rs" }
+  ]
+}
