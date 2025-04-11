@@ -1,15 +1,8 @@
 use serde_json::json;
-use vercel_runtime::{Body, Error, Request, Response, StatusCode};
+use vercel_runtime::{Body, Error, Request, Response};
+use crate::helpers::base_response;
 
 pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
-    Ok(Response::builder()
-        .status(StatusCode::OK)
-        .header("Content-Type", "application/json")
-        .body(
-            json!({
-                "message": "Hello from Rust Service",
-            })
-            .to_string()
-            .into(),
-        )?)
+    let data = json!({ "greeting": "Hello from Rust Service" });
+    base_response::success("Request successful", Some(data))
 }
