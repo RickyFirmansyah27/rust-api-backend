@@ -708,7 +708,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "simple_runtime_demo"
+name = "myapp"
 version = "0.1.0"
 dependencies = [
  "rand",
