@@ -1,4 +1,5 @@
 use rand::seq::SliceRandom;
+pub mod routes;
 
 pub fn choose_planet() -> String {
     let planets = vec!["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"];
