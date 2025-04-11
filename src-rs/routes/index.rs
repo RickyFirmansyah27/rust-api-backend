@@ -1,4 +1,3 @@
-// src/routes/index.rs atau src-rs/routes/index.rs
 use serde_json::json;
 use vercel_runtime::{Body, Error, Request, Response, StatusCode};
 use crate::controllers::{hello_controller, user_controller};
@@ -9,33 +8,28 @@ pub async fn route_handler(req: Request) -> Result<Response<Body>, Error> {
     
     match (method, path) {
         ("GET", "/") => {
+            let body = json!({
+                "status": true,
+                "message": "Welcome to Rust Service",
+            });
+        
             Ok(Response::builder()
                 .status(StatusCode::CREATED)
                 .header("Content-Type", "application/json")
-                .body(
-                    json!({
-                        "status": true,
-                        "message": "Welcome to Rust Service",
-                        "data": []
-                    })
-                    .to_string()
-                    .into(),
-                )?)
-        },
+                .body(body.to_string().into())?)
+        },        
         ("GET", "/hello") => hello_controller::handler(req).await,
         ("POST", "/user") => user_controller::handler(req).await,
         _ => {
-            // Route not found
+            let body = json!({
+                "status": false,
+                "message": "No Route Found",
+            });
+        
             Ok(Response::builder()
                 .status(StatusCode::NOT_FOUND)
                 .header("Content-Type", "application/json")
-                .body(
-                    json!({
-                        "error": "Route not found",
-                    })
-                    .to_string()
-                    .into(),
-                )?)
-        }
+                .body(body.to_string().into())?)
+        },        
     }
 }
