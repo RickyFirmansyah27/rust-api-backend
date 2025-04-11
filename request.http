@@ -1,24 +1,18 @@
+//routes test
 
-// This request returns what ever id is inputted at the end of the request
-// i.e. 1 in this case
+//created user
 ###
-POST https://vercel-rust-gold.vercel.app/api/user/[1]
-Content-Type: application/json
-
-{}
-
-// This is a simple API call that outputs a planet randomly generated
-###
-POST https://vercel-rust-gold.vercel.app/api/simple
-Content-Type: application/json
-
-{}
-
-// This takes the user's name and outputs a randomly generated planet
-###
-POST https://vercel-rust-gold.vercel.app/api/complex
+POST https://rust-api-service.vercel.app/user
 Content-Type: application/json
 
 {
-    "name": "Ellie"
+    "username": "jhon doe"
 }
+
+// greeting
+###
+GET https://rust-api-service.vercel.app
+
+// Hello
+###
+GET https://rust-api-service.vercel.app/hello
