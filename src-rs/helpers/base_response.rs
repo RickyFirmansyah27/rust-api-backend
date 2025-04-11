@@ -5,7 +5,7 @@ pub fn success(message: &str, data: Option<Value>) -> Result<Response<Body>, Err
     let body = json!({
         "status": true,
         "message": message,
-        "data": data.unwrap_or(json!(null))
+        "data": Some(json!(data))
     });
 
     Ok(Response::builder()
